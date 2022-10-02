@@ -1,0 +1,10 @@
+username_prefix: "@"
+header_text: "Leetcode"
+total_text: "Solved:"
+text_size: 16
+text_color: "#6e7681"
+easy_color: "green"
+medium_color: "orange"
+hard_color: "red"
+background_color: "#0d1117"
+font_family: "digital-7"
