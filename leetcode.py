@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
 
@@ -6,7 +5,6 @@ class LeetcodeUserdata():
   def __init__(self, name: str):
     self.name = name
     data = self.query()
-
     total_data = data['allQuestionsCount']
     for item in total_data:
       match(item['difficulty']): 
