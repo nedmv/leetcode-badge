@@ -15,7 +15,7 @@ Badge example:
 
 Default configuration path: `config.yml`
 
-Default output path: `badge.png`
+Default output path: `generated/badge.png`
 
 ### Github Actions
 1. Fork repository and enable Github Actions.

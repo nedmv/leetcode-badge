@@ -7,13 +7,6 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
-env:
-  USERNAME: ${{ secrets.LEETCODE_USERNAME }}
-  OUTPUT_PATH: "badge.png"
-  CONFIG_PATH: "config.yml"
-  ACTIONS: github-actions
-  
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,12 +27,14 @@ jobs:
         
     - name: Generate badge
       run: |
-        python main.py $USERNAME
+        mkdir generated
+        python main.py ${{ secrets.LEETCODE_USERNAME }}
         
     - name: Update repo if needed
       run: |
         git config --global user.name "github actions"
         git config --global user.email "noreply@example.com"
-        git switch $ACTIONS
-        git add $OUTPUT_PATH
+        git switch github-actions
+        mv generated/badge.png badge.png
+        git add badge.png
         git commit -m "chore: update badge" && git push || true

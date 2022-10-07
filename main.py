@@ -11,8 +11,8 @@ if __name__ == '__main__':
                         default = ['config.yml'], 
                         help = 'path to config file (defaults to config.yml)')
     parser.add_argument('--output', nargs = 1, metavar = 'OUTPUT', 
-                        default = ['badge.png'], 
-                        help = 'path to output file (defaults to badge.png)')
+                        default = ['generated/badge.png'], 
+                        help = 'path to output file (defaults to generated/badge.png)')
     args = parser.parse_args()
 
     configpath = args.config[0]
