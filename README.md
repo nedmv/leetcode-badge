@@ -3,6 +3,9 @@
 
 Simple badge generator. Generated badge contains solved problem counters for chosen [Leetcode](https://leetcode.com) user.
 
+Badge example:
+![Badge example](examples/badge.png)
+
 ## Usage
 1. Install dependencies:
 `pip install -r requirements.txt`
