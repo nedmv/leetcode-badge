@@ -11,7 +11,7 @@ class BadgeConfig(UserDict):
         'total_text_color' : '#d0d7de',  #white
         'total_color'      : '#54aeff',  #blue
         'header_color'     : '#ffa116',  #orange
-        'background_color' : '#0d1117',  #dark
+        'background_color' : '#22272e',  #dark
         'easy_color'       : '#00b8a3',  #green
         'medium_color'     : '#ffc01e',  #orange
         'hard_color'       : '#ef4743',  #red
