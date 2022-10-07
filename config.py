@@ -1,21 +1,36 @@
+from collections import UserDict
 import yaml
+import warnings
+class BadgeConfig(UserDict):
+    data = {
+        'username_prefix'  : '@',
+        'header_text'      : 'Leetcode',
+        'total_text'       : 'Solved: ', 
 
-class BadgeConfig(yaml.YAMLObject):
-    yaml_tag = u'!BadgeConfig'
-    yaml_loader = yaml.SafeLoader
+        'username_color'   : '#54aeff',  #blue
+        'total_text_color' : '#d0d7de',  #white
+        'total_color'      : '#54aeff',  #blue
+        'header_color'     : '#ffa116',  #orange
+        'background_color' : '#0d1117',  #dark
+        'easy_color'       : '#00b8a3',  #green
+        'medium_color'     : '#ffc01e',  #orange
+        'hard_color'       : '#ef4743',  #red
 
-    #Defaults
-    username_prefix = ''
-    username_color = 'black'
-    header_text = 'Leetcode'
-    total_text = 'Solved: '
-    total_text_color = 'black'
-    total_color = 'blue'
-    header_color = 'black'
-    background_color = 'white'
-    easy_color = 'green'
-    medium_color = 'orange'
-    hard_color = 'red'
-    text_size = 16
-    font_family = 'monospace'
-    font_path = 'fonts/digital-7.regular.ttf'
+        'text_size'        : 24,  #pixels
+        'font_path'        : 'fonts/digital-7.regular.ttf'
+    }
+
+    def __init__(self, path = ''):
+        try:
+            with open(path, 'r') as file:
+                cfg = yaml.safe_load(file)
+            if isinstance(cfg, dict):
+                for key, val in cfg.items():
+                    if key in self.data:
+                        self.data[key] = val
+                    else:
+                        warnings.warn(f"Config param '{key}' is not recognized.")
+            else:
+                warnings.warn(f"Config is not dictionary. Continue with default params.")     
+        except IOError:
+            warnings.warn(f"Failed to process configuration file '{path}'. Continue with default params.")   

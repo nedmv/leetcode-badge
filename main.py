@@ -2,7 +2,6 @@ from config import BadgeConfig
 from leetcode import LeetcodeUserdata
 from generator import generate_badge
 import argparse
-import yaml
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate badge with given Leetcode user stats.')
@@ -16,9 +15,10 @@ if __name__ == '__main__':
                         help = 'path to output file (defaults to generated/badge.png)')
     args = parser.parse_args()
 
-    with open(args.config[0], 'r') as file:
-        cfg = yaml.safe_load(file)
+    configpath = args.config[0]
     username = args.user[0]
     savepath = args.output[0]
+
+    cfg = BadgeConfig(args.config[0])
     data = LeetcodeUserdata(username)
     generate_badge(cfg, data, savepath)
