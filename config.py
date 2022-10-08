@@ -18,7 +18,8 @@ class BadgeConfig(UserDict):
 
         'text_size'        : 24,  #pixels
         'font_path'        : 'fonts/digital-7.regular.ttf',
-        'num_format'       : ''
+        'num_format'       : '',
+        'hide_username'    : False
     }
 
     def __init__(self, path = ''):

@@ -11,4 +11,5 @@ total_text: "Solved:"
 # background_color: "#22272e"
 # text_size: 24
 font_path: "fonts/digital-7.mono.ttf"
-#num_format: "03d"
+# num_format: "03d"
+# hide_username: True

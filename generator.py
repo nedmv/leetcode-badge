@@ -3,6 +3,10 @@ from leetcode import LeetcodeUserdata
 from config import BadgeConfig
 
 def generate_badge(cfg: BadgeConfig, data: LeetcodeUserdata, savepath: str):
+    if cfg['hide_username']:
+        cfg['username_prefix'] = ''
+        data.name = ''
+    
     size = cfg['text_size']
     fnt = ImageFont.truetype(cfg['font_path'], size)
 
@@ -26,8 +30,13 @@ def generate_badge(cfg: BadgeConfig, data: LeetcodeUserdata, savepath: str):
     top = size // 2
     bottom = 3*size // 2
 
-    draw.text((width[' ']+width['left']//2, top), cfg['header_text'], font = fnt, anchor = 'mm', fill = cfg['header_color'])
-    draw.text((width[' ']+width['left']//2, bottom), f"{cfg['username_prefix']}{data.name}", font = fnt, anchor = 'mm', fill = cfg['username_color'])
+    if not cfg['hide_username']:
+        draw.text((width[' ']+width['left']//2, top), cfg['header_text'], font = fnt, anchor = 'mm', fill = cfg['header_color'])
+        draw.text((width[' ']+width['left']//2, bottom), f"{cfg['username_prefix']}{data.name}", font = fnt, anchor = 'mm', fill = cfg['username_color'])
+    else:
+        draw.text((width[' ']+width['left']//2, (top + bottom)//2), cfg['header_text'], font = fnt, anchor = 'mm', fill = cfg['header_color'])
+
+
 
     draw.text((2 * width[' ']+width['left'] + width['right']//2 - width['total']//2, top), cfg['total_text'], font = fnt, anchor = 'lm', fill = cfg['total_text_color'])
     draw.text((2 * width[' ']+width['left'] + width['right']//2 + width['total']//2, top), cfg.format(data.user_total), font = fnt, anchor = 'rm', fill = cfg['total_color'])
