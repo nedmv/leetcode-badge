@@ -12,10 +12,10 @@ def generate_badge(cfg: BadgeConfig, data: LeetcodeUserdata, savepath: str):
     width['left'] = int(max(width['header'], width['username']))
 
     width[' '] = fnt.getlength(' ')
-    width['total'] = fnt.getlength(f"{cfg['total_text']}{data.user_total:04d}")
-    width['easy'] = fnt.getlength(f'{data.user_easy:04d}')
-    width['medium'] = fnt.getlength(f'{data.user_medium:04d}')
-    width['hard'] = fnt.getlength(f'{data.user_hard:04d}')
+    width['total'] = fnt.getlength(f"{cfg['total_text']}{cfg.format(data.user_total)}")
+    width['easy'] = fnt.getlength(cfg.format(data.user_easy))
+    width['medium'] = fnt.getlength(cfg.format(data.user_medium))
+    width['hard'] = fnt.getlength(cfg.format(data.user_hard))
     width['counters'] = width['easy'] + width['medium'] + width['hard'] + 3 * width[' ']
     width['right'] = int(max(width['total'], width['counters']))
 
@@ -30,8 +30,8 @@ def generate_badge(cfg: BadgeConfig, data: LeetcodeUserdata, savepath: str):
     draw.text((width['left']//2, bottom), f"{cfg['username_prefix']}{data.name}", font = fnt, anchor = 'mm', fill = cfg['username_color'])
 
     draw.text((width['left'] + width['right']//2 - width['total']//2, top), cfg['total_text'], font = fnt, anchor = 'lm', fill = cfg['total_text_color'])
-    draw.text((width['left'] + width['right']//2 + width['total']//2, top), f'{data.user_total:04d}', font = fnt, anchor = 'rm', fill = cfg['total_color'])
-    draw.text((width['left'] + width['right']//2, bottom), f'{data.user_medium:04d}', font = fnt, anchor = 'mm', fill = cfg['medium_color'])
-    draw.text((width['left'] + width['right']//2 - width['medium']//2 - width[' '], bottom), f'{data.user_easy:04d}', font = fnt, anchor = 'rm', fill = cfg['easy_color'])
-    draw.text((width['left'] + width['right']//2 + width['medium']//2 + width[' '], bottom), f'{data.user_hard:04d}', font = fnt, anchor = 'lm', fill = cfg['hard_color'])
+    draw.text((width['left'] + width['right']//2 + width['total']//2, top), cfg.format(data.user_total), font = fnt, anchor = 'rm', fill = cfg['total_color'])
+    draw.text((width['left'] + width['right']//2, bottom), cfg.format(data.user_medium), font = fnt, anchor = 'mm', fill = cfg['medium_color'])
+    draw.text((width['left'] + width['right']//2 - width['medium']//2 - width[' '], bottom), cfg.format(data.user_easy), font = fnt, anchor = 'rm', fill = cfg['easy_color'])
+    draw.text((width['left'] + width['right']//2 + width['medium']//2 + width[' '], bottom), cfg.format(data.user_hard), font = fnt, anchor = 'lm', fill = cfg['hard_color'])
     badge.save(savepath)

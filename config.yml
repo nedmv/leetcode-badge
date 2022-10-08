@@ -1,6 +1,6 @@
 # username_prefix: ""
 # header_text: "Leetcode"
-# total_text: "Solved: "
+total_text: "Solved:"
 # username_color: "#54aeff"
 # total_text_color: "#d0d7de"
 # total_color: "#54aeff"
@@ -10,4 +10,5 @@
 # hard_color: "#ef4743"
 # background_color: "#22272e"
 # text_size: 24
-# font_path: "fonts/digital-7.regular.ttf"
+font_path: "fonts/digital-7.mono.ttf"
+#num_format: "03d"

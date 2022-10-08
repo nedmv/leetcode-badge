@@ -17,7 +17,8 @@ class BadgeConfig(UserDict):
         'hard_color'       : '#ef4743',  #red
 
         'text_size'        : 24,  #pixels
-        'font_path'        : 'fonts/digital-7.regular.ttf'
+        'font_path'        : 'fonts/digital-7.regular.ttf',
+        'num_format'       : ''
     }
 
     def __init__(self, path = ''):
@@ -33,4 +34,7 @@ class BadgeConfig(UserDict):
             else:
                 warnings.warn(f"Config is not dictionary. Continue with default params.")     
         except IOError:
-            warnings.warn(f"Failed to process configuration file '{path}'. Continue with default params.")   
+            warnings.warn(f"Failed to process configuration file '{path}'. Continue with default params.")
+
+    def format(self, value: int):
+        return f"{value:{self.data['num_format']}}"
