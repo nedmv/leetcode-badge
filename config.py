@@ -3,7 +3,7 @@ import yaml
 import warnings
 class BadgeConfig(UserDict):
     data = {
-        'username_prefix'  : '@',
+        'username_prefix'  : '',
         'header_text'      : 'Leetcode',
         'total_text'       : 'Solved: ', 
 
