@@ -23,6 +23,6 @@ Default output path: `generated/badge.png`
 3. Use action `generate-badge`.
 It could be launched:
     - manually
-    - daily at 00:00 UTC
+    - each Monday at 00:00 UTC
     - on commits in `main`
 4. Access generated badge on branch `github-actions`.
