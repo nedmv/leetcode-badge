@@ -38,5 +38,6 @@ jobs:
         git switch github-actions
         mv generated/badge-dark.png badge-dark.png
         mv generated/badge-light.png badge-light.png
-        git add badge-dark.png badge-light.png
+        cp badge-dark.png badge.png
+        git add badge-dark.png badge-light.png badge.png
         git commit -m "chore: update badge" && git push || true
