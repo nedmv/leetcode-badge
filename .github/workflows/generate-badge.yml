@@ -28,13 +28,15 @@ jobs:
     - name: Generate badge
       run: |
         mkdir generated
-        python main.py ${{ secrets.LEETCODE_USERNAME }}
+        python main.py --config config-dark.yml --output generated/badge-dark.png ${{ secrets.LEETCODE_USERNAME }}
+        python main.py --config config-light.yml --output generated/badge-light.png ${{ secrets.LEETCODE_USERNAME }}
         
     - name: Update repo if needed
       run: |
         git config --global user.name "github actions"
         git config --global user.email "noreply@example.com"
         git switch github-actions
-        mv generated/badge.png badge.png
-        git add badge.png
+        mv generated/badge-dark.png badge-dark.png
+        mv generated/badge-light.png badge-light.png
+        git add badge-dark.png badge-light.png
         git commit -m "chore: update badge" && git push || true
