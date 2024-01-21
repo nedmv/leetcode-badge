@@ -4,9 +4,11 @@
 Simple badge generator. Generated badge contains solved problem counters for chosen [Leetcode](https://leetcode.com) user.
 
 Badge example:
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/nedmv/leetcode-badge/blob/github-actions/badge-dark.png">
-  <img alt="Badge example." src="https://github.com/nedmv/leetcode-badge/blob/github-actions/badge-light.png">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nedmv/leetcode-badge/github-actions/badge-dark.png">
+<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/nedmv/leetcode-badge/github-actions/badge-light.png">
+<img alt="Badge example." src="https://raw.githubusercontent.com/nedmv/leetcode-badge/github-actions/badge.png">
 </picture>
 
 ## Usage
